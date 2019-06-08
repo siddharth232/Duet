@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		​<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+	<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding:0;
+		}
+		#canvas{
+			border:solid;
+			position: absolute;
+			right:40%;
+			display: none;
+      }
+      #can{
+       border:solid;
+      position: absolute;
+      right:40%;
+      display: none;
+       
+      }
+#menu{
+	    border:solid;
+			position: absolute;
+			right:40%;
+			width: 322.4px;
+			height: 650px;
+            top: 0px;
+      }
+      p{
+      	position: absolute;
+      }
+      #title{
+      	  font-family: 'Cute Font', cursive;
+      	  font-size: 100px;
+      	  top: 120px;
+      	  left: 80px;
+      }
+      #des{
+      	  font-family: 'Cute Font', cursive;
+      	  font-size: 50px;
+      	  top: 250px;
+      	  left: 30px;
+      }
+      #name{
+      	        top: 420px;
+           		height: 34px;
+           		border-radius: 5px 5px 5px 5px;
+           		border-style: solid;
+           		border-width: 1px;
+           		border-color: #BDC7D8;
+                position: absolute;
+	            width:280px;
+           	    height: 20px;
+           	    font-size: 18px;
+                padding: 10px;
+                left: 10px;  
+      }
+      #butt{
+      	 border-radius: 5px 5px 5px 5px;
+            color:white;
+            background-color: #619F4E;
+            font-weight: bold;
+            width:200px;
+            height:40px;
+            left:60px;
+            top:490px;
+            position: absolute;
+            border-color: #3B6E22;
+            border-width: 1px;
+            box-sizing: border-box;
+            font-size: 20px;
+            font-family: Helvetica;
+            cursor: pointer;
+      }
+      #sco{
+        top:75px;
+        width: 200px;
+        height: 500px;
+        border-color: black;
+        border-style: solid;
+        position: absolute;
+
+      }
+      #dd{
+      	top: 50px;
+      }
+      #go{
+      border:solid;
+      position: absolute;
+      right:40%;
+      width: 322.4px;
+      height: 650px;
+      top: 0px;
+      display: none;
+     
+      }
+      button{
+        position: absolute;
+      }
+      #ti{
+         font-family: 'Cute Font', cursive;
+          font-size: 100px;
+          top: 50px;
+          left: 80px;
+          position: absolute;
+      }
+      #sb{
+         font-family: 'Cute Font', cursive;
+         font-size: 50px;
+         top: 290px;
+         left: 80px;
+
+      }
+      #players{
+         font-family: 'Cute Font', cursive;
+         font-size: 30px;
+         position: absolute;
+         top: 350px;
+         left: 40px; 
+      }
+      #pa{
+         border-radius: 5px 5px 5px 5px;
+            color:white;
+            background-color: #619F4E;
+            font-weight: bold;
+            width:200px;
+            height:40px;
+            left:60px;
+            top:590px;
+            position: absolute;
+            border-color: #3B6E22;
+            border-width: 1px;
+            box-sizing: border-box;
+            font-size: 20px;
+            font-family: Helvetica;
+            cursor: pointer;
+      }
+      .control{
+           border-radius: 5px 5px 5px 5px;
+            color:white;
+            background-color: #619F4E;
+            font-weight: bold;
+                  position: absolute;
+            border-color: #3B6E22;
+            border-width: 1px;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-family: Helvetica;
+            cursor: pointer;
+            display: none;
+      }
+     #up{
+      top:500px;
+      left:12%;
+     }
+     #pause{
+      top: 540px;
+      left: 6%;
+     }
+     #restart{
+      top: 540px;
+      left:14.5%;
+     }
+     #down{
+      left:11%;
+      top: 580px;
+     }
+     
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="322.4px" height="650px"></canvas>
+  <canvas id="can" width="322.4px" height="650px"></canvas>
+
+<div id="menu">
+	<p id="title">Duet</p>
+	<p id="des">Enter your name to play game !! </p>
+	<input type="text" name="name" id="name" placeholder="Enter Your Name">
+	<button id="butt" onclick="start()">PLAY</button>
+
+</div>
+
+
+<button onclick="up()" id="up" class="control">UP </button>
+<button onclick="down()" id="down" class="control">DOWN</button>
+<input type="submit" name="pause" id="pause" class="control" value="pause" onclick="pause()">
+<button onclick="window.location.reload()" id="restart" class="control">RESTART</button>
+</body>
+<script type="text/javascript">
+	  var ab=0;
+    var cd=0;
+    var p=0;
+    var ab1=0;
+    var cd1=0;
+    var iv1=false;
+    var rd=71.5;
+	  var ac1=0;
+    var ac=true;
+	  var ap=0;
+	  var lvl=1;
+    var ts=0;
+    var name;
+   
+    var iv=false;
+    var dy=0.25;
+
+    function up (){
+        x=x+dx;
+	}
+	function down(){
+     	x=x-dx;
+	}
+  
+	
+    var pa=true;
+    var c=document.getElementById('canvas').getContext("2d");
+	var x=1;
+	var dx=3;
+    var p=0;
+	var dx=3;
+	var oy=3;
+	var s=0;
+	var ds1=5;
+  var dr=4;
+    var obsHeight;
+    var reached=true;
+    var obsY;
+    var obsX;
+    var obsWidth;
+   	var center=makecircle(0,0,rd,0,2*Math.PI);
+	var movable1=makecircle(-rd,0,15.7,0,2*Math.PI);
+	var movable2=makecircle(rd,0,15.7,0,2*Math.PI);
+	 
+	
+	function basicdraw(){
+    c.clearRect(0,0,canvas.width,canvas.height);
+   affmtr();
+	c.translate(canvas.width/2,575);
+    center.stroke();
+    c.fillStyle = '#000000';
+   
+  c.rotate((Math.PI / 180) * x);
+    if(ac){
+	
+    movable1.fill();
+    movable2.fill();}
+    else{
+          movable1.fill();
+      ac1++;
+      if(ac1==100){ac=true;}
+      
+
+    }
+    c.fillStyle = '#000000';
+	c.setTransform(1, 0, 0, 1, 0, 0);
+
+  level();
+   collision();
+	if(obsY>canvas.height){
+		reached=true;
+    ap++;
+     oy=oy+dy;
+}
+	if(reached){
+		 obsY=0;
+		 obsHeight=20+Math.floor(Math.random()*20);
+         obsWidth=Math.floor(Math.random()*canvas.width/2) ;
+   if(obsWidth>142){   
+      if(Math.floor(Math.random()*2)){
+      	obsX=Math.floor(Math.random() * 70);}
+      	else{
+       		obsX=412.6+Math.floor(Math.random() * (obsWidth-87.2));
+      	}  
+}
+      
+      else{
+        obsX=89.7+Math.floor(Math.random() * (143));
+      }
+      reached=false;
+}
+
+	else{
+    if(lvl==1){
+	obsY=obsY+oy;}
+   else if(lvl==2){
+    var ox=4;
+    obsY=obsY+oy;
+    obsX=obsX+ox;
+    if(obsX<0||(obsX+obsWidth)>canvas.width)
+         {
+           ox=-ox;
+         }
+
+   }
+	}
+	
+   c.fillRect(obsX,obsY,obsWidth,obsHeight);
+   c.fillStyle="#000000";
+	 score();
+	 s++;
+  
+  
+ 
+
+}
+    
+
+    function makecircle(x,y,r,sa,ea){
+    	return{
+    		X:x,
+    		Y:y,
+    		R:r,
+    		Sa:sa,
+    		Ea:ea,
+    		fill:function(){
+    			c.beginPath();
+    			c.arc(this.X,this.Y,this.R,this.Sa,this.Ea,true);
+    			c.fill();
+    		    },
+    		stroke:function(){
+    			c.beginPath();
+    			c.arc(this.X,this.Y,this.R,this.Sa,this.Ea,true);
+    			c.stroke();
+    		}
+
+    	}
+    }
+    
+function collision(){
+       if((obsX<((canvas.width/2)-(rd*Math.abs(Math.cos((Math.PI / 180) * x)))))&&((canvas.width/2)-(rd*Math.abs(Math.cos((Math.PI / 180) * x)))<(obsX+obsWidth))){
+       	if(((obsY<(575-(rd*Math.abs(Math.sin((Math.PI / 180) * x))))))&&((obsY+obsHeight)>(575-(rd*Math.abs(Math.sin((Math.PI / 180) * x)))))&&((Math.sin((Math.PI / 180) * x))>=0)){
+          failsit();
+       	
+            
+       		
+       	}
+       	else if(((obsY<(575+(rd*Math.abs(Math.sin((Math.PI / 180) * x))))))&&((obsY+obsHeight)>(575+(rd*Math.abs(Math.sin((Math.PI / 180) * x)))))&&((Math.sin((Math.PI / 180) * x))<=0)){
+          failsit();
+        
+            
+      
+        } }
+       if((obsX<((canvas.width/2)+(rd*Math.abs(Math.cos((Math.PI / 180) * x)))))&&((canvas.width/2)+(rd*Math.abs(Math.cos((Math.PI / 180) * x)))<(obsX+obsWidth))){
+       	if(((obsY<(575-(rd*Math.abs(Math.sin((Math.PI / 180) * x))))))&&((obsY+obsHeight)>(575-(rd*Math.abs(Math.sin((Math.PI / 180) * x)))))&&((Math.sin((Math.PI / 180) * x))<=0)){
+       	failsit();   
+            
+      
+       
+       	}
+       	else if(((obsY<(575+(rd*Math.abs(Math.sin((Math.PI / 180) * x))))))&&((obsY+obsHeight)>(575+(rd*Math.abs(Math.sin((Math.PI / 180) * x)))))&&((Math.sin((Math.PI / 180) * x))>=0)){
+      failsit();
+        
+            
+             	}
+       }
+}
+
+function pause(){
+    if(p%2==0){
+    	pa=false;
+    	p=p+1;
+      document.getElementById("pause").value="resume";
+    }else{
+    	pa=true;
+    	p=p+1;
+      document.getElementById("pause").value="pause";	
+    }
+}
+function game(){
+  if(pa){
+  	basicdraw();
+  }
+}
+function score(){
+	c.font="16px Castellar";
+	c.fillStyle="#000000";
+	c.fillText("score:"+s,8,20);
+  c.fillText("Level:"+lvl,257,22);
+ 
+       
+}
+
+function start(){
+	name=document.getElementById("name").value;
+	if (name=="") {
+        alert("Enter Some Name !");
+	}
+    else{
+     document.getElementById("menu").style.display="none";
+     document.getElementById("canvas").style.display="inline-block";
+     document.getElementById("up").style.display="inline-block";
+     document.getElementById("down").style.display="inline-block";
+      document.getElementById("restart").style.display="inline-block";
+       document.getElementById("pause").style.display="inline-block";
+     Time=setInterval(game,10);	
+    }
+ 
+}
+function gameover(){
+ document.getElementById("canvas").style.display="none";
+ // document.getElementById("go").style.display="inline-block";
+     document.getElementById("up").style.display="none";
+     document.getElementById("down").style.display="none";
+      document.getElementById("restart").style.display="none";
+       document.getElementById("pause").style.display="none";
+       document.getElementById("can").style.display="inline-block";
+       var cv=document.getElementById('can').getContext("2d");
+     cv.setTransform(1, 0, 0, 1, 0, 0);
+    cv.clearRect(0,0,canvas.width,canvas.height);
+   cv.font="45px Castellar";
+  cv.fillStyle="#000000";
+   cv.fillText("Game Over!",7,50);
+   cv.font="30px Castellar"
+   cv.fillText("Scoreboard",50,125);
+  
+  cv.font="18px Castellar";
+   arscore=JSON.parse(localStorage.getItem('st'));
+  arscore.sort(function(b,a){return a.sc-b.sc});
+  
+    x=175;
+    dx=25;
+  for( i=0;i<arscore.length;i++){
+    cv.fillText((i+1)+"."+arscore[i].nam+" : "+arscore[i].sc,10,x);
+    x=x+dx;
+  }
+
+}
+function level(){
+  if(s>10000){
+    lvl=2;
+  }
+}
+
+function failsit(){
+    clearInterval(Time);
+              if (localStorage.length==0) {
+          var arr=[];
+          arr.push({nam:name,sc:s});
+          localStorage.setItem('st', JSON.stringify(arr));
+        }else
+        {
+          var arr=JSON.parse(localStorage.getItem('st'));
+          arr.push({nam:name,sc:s});
+           localStorage.setItem('st', JSON.stringify(arr));
+        }
+            gameover();
+}
+function affmtr(){
+   c.fillStyle="#000000";
+   c.strokeRect(115,8,100,22.5);
+   c.fillRect(115,8,ap,22.5);
+  
+   if (ap==100) {
+    ap=0;
+    ac=false;
+   }
+}
+
+</script>
+</body>
+</html>
